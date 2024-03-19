@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html태그에 접근하기</title>
+    <style>
+        div{
+            border: 1px solid black;
+            background: black;
+            height: 100px;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    <h3>문제1. 색상 선택후 변경 버튼을 클릭하면 색상이 변경되도록 만들어 보세요</h3>
+    <div id="div1"></div>
+    <input type="color" id="selectColor"> <!--가져와서 벨류 확인해보기-->
+    <button onclick="changeColor()">변경</button> <!--클릭됬을 때 위에 벨류가져와서 div1의 배경 변경해주기-->
+
+    <script>
+        
+        function changeColor(){
+            const sc = document.getElementById("selectColor");
+            console.log(sc.value);
+            const div1 = document.getElementById("div1");
+            div1.style.background= sc.value;
+        }
+    </script>
+
+
+    <hr><br><br>
+    <h3>문제2. 버튼에 따른 크기조절이 가능하게 만들어 보세요</h3>
+    <div id="div2"></div>
+    <button onclick="small()">50x50</button>
+    <button onclick="middle()">원본(100x100)</button>
+    <button onclick="big()">200x200</button>
+
+    <script>
+        function small(){
+            const d = document.getElementById("div2");
+            d.style.height="50px";
+            d.style.width="50px";
+        }
+        function middle(){
+            const d = document.getElementById("div2");
+            d.style.height="100px";
+            d.style.width="100px";
+        }
+        function big(){
+            const d = document.getElementById("div2");
+            d.style.height="200px";
+            d.style.width="200px";
+        }
+    </script>
+
+
+    <!-- 매개변수방식 -->
+    <hr><br><br>
+    <h3>문제2. 버튼에 따른 크기조절이 가능하게 만들어 보세요</h3>
+    <div id="div3"></div>
+    <button onclick="reSize(50,50)">50x50</button>
+    <button onclick="reSize(100,100)">원본(100x100)</button>
+    <button onclick="reSize(200,200)">200x200</button>
+
+    <script>
+        const d3 = document.getElementById("div3");
+        function reSize(width,height){
+            d3.style.width=width +"px";
+            d3.style.height=height +"px";
+        }
+    </script>
+
+</body>
+</html>

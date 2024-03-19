@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .area {
+            border: 1px solid red;
+            width: 750px;
+            height: 200px;
+            background-color: gainsboro;
+        }
+
+  
+        /* #d1{
+            display:flex;
+        }
+        #d1>input{
+            margin-left: 5px;
+        }
+        #d1> div{
+            margin-left: 5px;
+        } */
+    </style>
+</head>
+
+<body>
+    <h3>Practice 1</h3>
+    <fieldset>
+        <legend>취미
+        </legend>
+        <input type="checkbox" name="hobby" id="all" value="전체선택" onchange="allcheck()"><label for="all">전체선택</label>
+        <input type="checkbox" name="hobby" id="compre" value="종합" onchange="changecheck()"> <label
+            for="compre">종합</label>
+        <input type="checkbox" name="hobby" id="novel" value="소설" onchange="changecheck()"><label for="novel">소설</label>
+        <input type="checkbox" name="hobby" id="poem" value="시/에세이" onchange="changecheck()"><label
+            for="poem">시/에세이</label>
+        <input type="checkbox" name="hobby" id="econ" value="경제,경영" onchange="changecheck()"><label
+            for="econ">경제.경영</label>
+        <input type="checkbox" name="hobby" id="selfd" value="자기개발" onchange="changecheck()"><label
+            for="selfd">자기개발</label>
+        <input type="checkbox" name="hobby" id="kid" value="아동" onchange="changecheck()"><label for="kid">아동</label>
+        <br>
+        <input type="checkbox" name="hobby" id="travel" value="여행" onchange="changecheck()"><label
+            for="travel">여행</label>
+        <input type="checkbox" name="hobby" id="science" value="과학" onchange="changecheck()"><label
+            for="science">과학</label>
+        <input type="checkbox" name="hobby" id="history" value="역사/문화" onchange="changecheck()"> <label
+            for="history">역사/문화</label>
+        <input type="checkbox" name="hobby" id="fore" value="외국어" onchange="changecheck()"><label for="fore">외국어</label>
+        <input type="checkbox" name="hobby" id="compu" value="컴퓨터" onchange="changecheck()"><label
+            for="compu">컴퓨터</label>
+        <input type="checkbox" name="hobby" id="comic" value="만화" onchange="changecheck()"><label for="comic">만화</label>
+    </fieldset>
+    <button onclick="btn()">카테고리 클릭</button>
+    <div class="area" id="area1"></div>
+    <script>
+        function allcheck() {
+            let allc = document.getElementById('all');
+            let hobbylist = document.getElementsByName('hobby');
+            if (allc.checked) {
+                for (checkbox of hobbylist) {
+                    checkbox.checked = allc.checked;
+                }
+            }
+
+        }
+
+        function btn() {
+            let d = document.getElementById('area1');
+            let hobbylist = document.getElementsByName('hobby');
+            d.innerHTML = "";
+            for (let checkbox of hobbylist) {
+                if (checkbox.checked) {
+                    if (checkbox) {
+                        d.innerHTML += checkbox.value + " ";
+                    }
+                }
+            }
+
+        }
+
+        function changecheck() {
+            let allcheck = true;
+            let allc = document.getElementById('all');
+            let hobbylist = document.getElementsByName('hobby');
+            for (checkbox of hobbylist) {
+                if (checkbox.value == "전체선택") {
+                    continue;
+                }
+                else {
+                    if (!checkbox.checked) {
+                        // allc.checked= false;
+                        allcheck = false;
+                    }
+                }
+            }
+            allc.checked = allcheck;
+        }
+    </script>
+
+    <br><br><br>
+    <h3>Practice2</h3>
+    <input type="number" id="num1">
+    <select name="" id="calculation">
+        <option value="add">+</option>
+        <option value="sub">-</option>
+        <option value="mul">*</option>
+        <option value="divs">/</option>
+        <option value="rem">%</option>
+    </select>
+    <input type="number" id="num2">
+    <button onclick="btncal()">=</button>
+    <input type="text" id="result">
+
+    <script>
+        function btncal() {
+            let cal = document.querySelector("#calculation");
+            let num1 = document.querySelector("#num1");
+            let num2 = document.querySelector("#num2");
+            let result = document.querySelector("#result");
+            console.log(parseInt.value + num2.value);
+            console.log(num2.value);
+
+            if (cal.value == "add") {
+                result.value = parseInt(num1.value) + parseInt(num2.value);
+            }
+            if (cal.value == "sub") {
+                result.value = parseInt(num1.value) - parseInt(num2.value);
+            }
+            if (cal.value == "mul") {
+                result.value = parseInt(num1.value) * parseInt(num2.value);
+            }
+            if (cal.value == "divs") {
+                result.value = parseInt(num1.value) / parseInt(num2.value);
+                if (result.value == Infinity) {
+                    result.value = "연산불가";
+                    result.style.background = "red";
+                    result.style.color = "white";
+                }
+            }
+            if (cal.value == "rem") {
+                result.value = parseInt(num1.value) % parseInt(num2.value);
+                if (isNaN(result.value)) {
+                    result.value = "연산불가";
+                    result.style.background = "red";
+                    result.style.color = "white";
+                }
+            }
+
+
+        }
+    </script>
+
+
+    <h3>Pratice3</h3>
+    <form action="#">
+        <fieldset id="field">
+            <legend>회원가입</legend>
+            <div id="d1">
+            아이디 : <input type="text" id="userID" onkeyup="okp()">
+            <div id="idresult"></div></div><br>
+
+            비밀번호 : <input type="password" id="userPwd"> <br><br>
+
+            <div id="d1">
+            비밀번호 확인 : <input type="password" id="userPwdCheck" onblur="onb()">
+            <div id="pwdresult"></div></div> <br>
+
+            이름 : <input type="text" id="userName"><br><br>
+
+            <input type="submit" onclick="return joinuser()" value="회원가입">
+        </fieldset>
+    </form>
+
+    <script>
+        function okp() {
+            let userid = document.getElementById("userID");
+            let d1 = document.getElementById("idresult");
+
+            if (userid.value === 'user01') {
+                d1.innerHTML = "이미 존재하는 아이디입니다.";
+                d1.style.color = "red";
+            }
+            else {
+                d1.innerHTML = "사용가능한 아이디입니다.";
+                d1.style.color = "green";
+            }
+            // d1.innerHTML="안녕하세요";
+
+        }
+        function onb() {
+            let userpwd = document.getElementById("userPwd");
+            let userpwdcheck = document.getElementById("userPwdCheck");
+            let d1 = document.getElementById("pwdresult");
+
+            if (userpwd.value === userpwdcheck.value) {
+                d1.innerHTML = "비밀번호가 일치합니다."
+                d1.style.color = "green";
+            }
+            else {
+                d1.innerHTML = "비밀번호가 일치하지 않습니다."
+                d1.style.color = "red";
+            }
+
+        }
+
+        function joinuser() {
+
+            let userid = document.getElementById("userID");
+            let fieldlist = document.getElementById("field");
+            let userpwd = document.getElementById("userPwd");
+            let userpwdcheck = document.getElementById("userPwdCheck");
+            let name = document.getElementById("userName");
+            if (userid.value == "") {
+                alert("아이디를 입력해주세요.");
+                return false;
+            }
+            else if (userpwd.value == "") {
+                alert("비밀번호를 입력해주세요.");
+                return false;
+            }
+            else if (userpwdcheck.value == "") {
+                alert("비밀번호 확인을 입력해주세요.");
+                return false;
+            }
+            else if (name.value == "") {
+                alert("이름을 입력해주세요.");
+                return false;
+            }
+            else if (userid.value === 'user01') {
+                alert("사용할 수 없는 아이디입니다.");
+                userid.value = "";
+                userid.focus();
+                return false;
+            }
+            else if (userpwdcheck.value != userpwd.value) {
+                alert("사용할 수 없는 비밀번호입니다.");
+                userpwdcheck.value = "";
+                userpwdcheck.focus();
+                return false;
+            }
+            else {
+                alert("회원가입이 성공!^^");
+                return true;
+            }
+        }
+
+    </script>
+    <div id="dtest">아이디 : <input type="text" id="test">
+    <div>123</div>
+</div>
+    
+</body>
+
+</html>
