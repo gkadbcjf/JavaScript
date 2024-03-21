@@ -130,7 +130,9 @@
             for (let checkbox of hobbylist) {
                 console.log(checkbox);
                 if (checkbox.checked) {
+                    if(checkbox.value != "전체선택"){
                     area.innerHTML += (checkbox.value + "<br>");
+                    }
                 }
             }
 

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #area1 {
+            border: 1px solid;
+            width: 500px;
+            height: 250px;
+        }
+
+        #field {
+            text-align: center;
+
+        }
+
+        #field>input {
+            margin-left: 25px;
+        }
+
+        #area2 {
+            /* display: none; */
+            background-color: rgb(177, 175, 175);
+        }
+
+     
+
+        #area2-1{
+            /* display: none; */
+        }
+        #area2-2{
+            display: none;
+        }
+        #area2-3{
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <fieldset>
+        <legend>구매 정보</legend>
+        <ul id="list">
+            <li>구매자 : <input type="text" name="name" id="uname" placeholder="구매자의 이름을 입력하세요."></li>
+            <li>상품명 : <input type="text" name="productname" id="pname" placeholder="구매 상품명을 입력하세요"></li>
+            <li>가격 : <input type="text" name="price" id="price" placeholder="구매 가격을 입력하세요"></li>
+            <li>구매 수량 : <input type="number" name="count" id="count" placeholder="최소 10" min="10" max="100" step="10">
+            </li>
+            <li>납품 등급 : <input type="range" min="1" max="9" step="2"></li><br>
+            <li>기타 사항 : <textarea name="etc" id="etc" cols="50" rows="10"></textarea></li>
+        </ul>
+    </fieldset>
+    <button onclick="btn()">입력 값 출력하기</button>
+    <div id="area1"></div>
+
+
+    <script>
+
+        let Arry = document.getElementsByTagName("input");
+        let area = document.getElementById("area1");
+
+        function btn() {
+            console.log(Arry);
+
+            area.innerHTML += ("구매자명 :" + Arry[0].value + "님<br>");
+            area.innerHTML += ("상품 명 :" + Arry[1].value + "핸드폰<br>");
+            area.innerHTML += ("가격 :" + Arry[2].value + "만원<br>");
+            area.innerHTML += ("구매수량 :" + Arry[3].value + "개<br>");
+            area.innerHTML += ("납품등급 :" + Arry[4].value + "등급<br>");
+            area.innerHTML += ("기타사항 :" + document.getElementById("etc").value);
+
+        }
+
+
+    </script>
+
+    <br><br><br>
+    <fieldset id="field">
+        <legend>검색할 항목을 선택하세요.</legend>
+        <input type="radio" name="some" id="title"><label for="title">제목</label>
+        <input type="radio" name="some" id="date"><label for="날짜">날짜</label>
+        <input type="radio" name="some" id="user"> <label for="user">작성자</label>
+
+    </fieldset>
+    <br>
+    <div id="area2">
+        <div id="area2-1">
+            검색할 제목을 입력하세요 :<br>
+            <input type="search"> <button onclick="btn()" >검색</button>
+        </div>
+        <div id="area2">
+            <div id="area2-2">
+                검색할 날짜를 선택하세요:<br>
+                <input type="month">- <input type="datetime" name="" id=""> <button onclick="btn()" >검색</button>
+            </div>
+            <div id="area2">
+                <div id="area2-3">
+                    검색할 작성자 아이디를 입력하세요.:<br>
+                    <input type="search"><button onclick="btn()" >검색</button>
+                </div>
+            </div>
+
+        <script>
+            function onclick(){
+              let arr=document.getElementsByName("some");
+              for(check of arr){
+                console.log(check);
+              }
+
+            }
+        </script>
+</body>
+
+</html>
